@@ -14,7 +14,7 @@
 using namespace std;
 
 bool inputManager(string);
-void requestInput(string);
+void requestInput();
 void buildDeck();
 void checkDeckStatus();
 void initHand();
@@ -34,10 +34,9 @@ void initMoney();
 void payFee();
 void printMoney();
 void awardMoney();
-void requestDiscard();
+void requestDiscard(string);
 bool checkConditions();
 string validateLetter(string);
-void exit();
 
 LinkedList *deck;
 LinkedList *hand;
@@ -53,20 +52,32 @@ int numberOfRanks = 13;
 int cardsInHand = 5;
 char bullet = 'A';
 string listPrefix = ": ";
-bool sameSuit = false;
+bool isFlush = false;
+bool isRoyal = false;
 int isQuad = 0;
 int isTriad = 0;
 int isPair = 0;
+int isRoyalPair = 0;
 
 string separator = "\n==========================================================\n";
 string startGameMessage = "Welcome to CyberPoker 2999!";
 string startRoundMessage = "Ready! Go!";
 string swapWhichMessage = "Pick which card to swap: ";
 string swapWithMessage = "Enter the rank and the suit together (e.g. Ace of Diamonds would be \"AD\"";
-string warningMessage = "Invalid option, try again. ";
+string warningMessage = "Sorry, invalid option. Please try again. ";
 string discardMessage = "Type the cards you want to discard (e.g. ABC) or just type <Enter> if you don't want to discard any cards:";
 string optionsMessage = "OPTIONS... \n- Type the letters for the cards you wish to keep. (i.e., \"acd\") \n- Type \"deck\" to view the cards remaining in the deck. \n- Type \"none\" to discard all cards in your hand. \n- Type \"all\" to keep all cards in your hand. \n- Type \"exit\" to exit the game. \n- Type \"swap\" to CHEAT and swap a card in your hand with one in the deck. \nYOUR CHOICE :";
-
+string winMessage = "You've won! You got ";
+string pairMessage = "One Pair (Jacks or higher)";
+string twoPairMessage = "Two Pairs";
+string triadMessage = "Three of a Kind";
+string straightMessage = "Straight";
+string flushMessage = "Flush";
+string fullhouseMessage = "Full House";
+string quadMessage = "Four of a Kind";
+string straightFlushMessage = "Straight Flush";
+string royalFlushMessage = "Royal Flush";
+string lostMessage = "Sorry! No good hands :(";
 
 int main(int argc, const char * argv[]) {
 	deck = new LinkedList();
@@ -78,6 +89,7 @@ int main(int argc, const char * argv[]) {
 }
 bool inputManager(string command)
 {
+	cout << "MANAGING INPUT!" << endl;
 	
 	if (command == "deck")
 	{
@@ -100,7 +112,7 @@ bool inputManager(string command)
 	else if (command == "exit")
 	{
 		//exit;
-		exit();
+		exit(0);
 		return true;
 	}
 	else if(command == "swap")
@@ -134,14 +146,16 @@ bool inputManager(string command)
 		//Check if they're valid;
 		//If not, request input again;
 		//If yes, send discard;
+		cout << "GOT INPUT!";
 		string validInput = validateLetter(command);
 
 		if (validInput != "")
 		{
 			command = validInput;
-			requestDiscard();
+			requestDiscard(command);
 		}
 		else {
+			cout << warningMessage << endl;
 			return false;
 		}
 		return true;
@@ -154,13 +168,13 @@ void requestInput()
 	string command;
 	
 	cout << optionsMessage;
-	getline(cin, command, ' ');
+	getline(cin, command);
 
 	bool isValidCommand = inputManager(command);
 
 	if (isValidCommand == false)
 	{
-		requestInput(command);
+		requestInput();
 	}
 }
 
@@ -295,6 +309,7 @@ void awardMoney()
 {
 	money += award;
 	cout << "You won " << "$" << award << "!" << endl;
+	system("pause");
 
 }
 void initHand()
@@ -431,21 +446,22 @@ void drawCards(int draws)
 
 bool checkConditions()
 {
-	sameSuit = false;
+	isFlush = false;
 	isQuad = 0;
 	isTriad = 0;
 	isPair = 0;
-
+	isRoyalPair = 0;
+	isRoyal = false;
 	//Check if suit's the same;
 	for (int s = 0; s < 4; s++)
 	{
 		Card currentCard = hand->getItem(s);
 		Card nextCard = hand->getItem(s + 1);
 
-		sameSuit = currentCard.suit == nextCard.suit;
-		if (sameSuit == false) break;
+		isFlush = currentCard.suit == nextCard.suit;
+		if (isFlush == false) break;
 	}
-	if (sameSuit) cout << "isSuit!" << endl;
+	if (isFlush) cout << "isSuit!" << endl;
 
 	//Create ranks array to count cards with same ranks.
 	int pairs[13] = { 0 };
@@ -470,6 +486,7 @@ bool checkConditions()
 			break;
 		case 2:
 			isPair++;
+			if (pairs[p] > 9 || pairs[p] == 0) isRoyalPair++;
 			//cout << "isPair!" << endl;
 			break;
 		case 1:
@@ -495,17 +512,102 @@ bool checkConditions()
 
 		//Validate aces.
 		if (c == 3 && nextRank == 12 && firstRank == 0)
+		{
 			counter++;
+			isRoyal = true;
+		}
 
 	}
 	//If
 	bool isStraight = counter == 4;
 	if (isStraight) cout << "isStraight!" << endl;
-	return sameSuit || isPair > 0 || isTriad > 0 || isQuad > 0 || isStraight;
+
+	string winningHandMessage;
+
+	if (isStraight)
+	{
+		if (isFlush)
+		{
+			if (isRoyal)
+			{
+				winningHandMessage = royalFlushMessage;
+				award = 800;
+			}
+			else
+			{
+				winningHandMessage = straightFlushMessage;
+				award = 50;
+			}
+		}
+		else
+		{
+			winningHandMessage = straightMessage;
+			award = 4;
+		}
+	}
+	else if (isFlush)
+	{
+		winningHandMessage = flushMessage;
+		award = 6;
+	}
+	else
+	{
+		if (isQuad == 1)
+		{
+			winningHandMessage = quadMessage;
+			award = 25;
+		}
+		else
+		{
+			if (isTriad == 1)
+			{
+				if (isPair == 1)
+				{
+					winningHandMessage = fullhouseMessage;
+					award = 9;
+				}
+				else
+				{
+					winningHandMessage = triadMessage;
+					award = 3;
+				}
+			}
+			else
+			{
+				if (isPair > 0)
+				{
+					if (isPair > 1)
+					{
+						winningHandMessage = twoPairMessage;
+						award = 2;
+					}
+					else
+					{
+						if (isRoyalPair > 0)
+						{
+							winningHandMessage = pairMessage;
+							award = 1;
+						}
+					}
+				}
+				else 
+				{
+				}
+			}
+		}
+	}
+
+	bool isPoker = isFlush || isStraight || isRoyalPair > 0 || isQuad > 0 || isTriad > 0 || isPair > 1;
+
+	if (isPoker)
+	{
+		cout << winMessage << winningHandMessage << "!" << endl;
+
+	}
+	else
+	{
+		cout << lostMessage << "!" << endl;
+	}
+	return isPoker;
 }
 
-void exit()
-{
-	//exit;
-	//system("");
-}
