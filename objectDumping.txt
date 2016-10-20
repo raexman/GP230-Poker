@@ -1,0 +1,186 @@
+Dumping objects ->
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {1231} normal block at 0x007B0948, 24 bytes long.
+ Data: <                > 03 00 00 00 09 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {1230} normal block at 0x007B0D80, 24 bytes long.
+ Data: <                > 03 00 00 00 06 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {1229} normal block at 0x007B0DC8, 24 bytes long.
+ Data: <                > 01 00 00 00 06 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {1228} normal block at 0x007B12C0, 24 bytes long.
+ Data: <                > 00 00 00 00 05 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {1227} normal block at 0x007B1038, 24 bytes long.
+ Data: <                > 00 00 00 00 03 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {1163} normal block at 0x007B1278, 24 bytes long.
+ Data: <                > 01 00 00 00 06 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {1162} normal block at 0x007B1980, 24 bytes long.
+ Data: <                > 03 00 00 00 09 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {1161} normal block at 0x007B1DB8, 24 bytes long.
+ Data: <                > 01 00 00 00 06 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\main.cpp(512) : {1157} normal block at 0x007B21A0, 12 bytes long.
+ Data: <H {         > 48 09 7B 00 CD CD CD CD 05 00 00 00 
+c:\users\respino6\documents\230\gp230-poker\main.cpp(397) : {1154} normal block at 0x007B1FE0, 12 bytes long.
+ Data: <            > 00 00 00 00 CD CD CD CD 00 00 00 00 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {1137} normal block at 0x007B0AF8, 24 bytes long.
+ Data: <                > 01 00 00 00 09 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {1136} normal block at 0x007B06C0, 24 bytes long.
+ Data: <                > 00 00 00 00 09 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {1135} normal block at 0x007B0990, 24 bytes long.
+ Data: <                > 00 00 00 00 06 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {1134} normal block at 0x007B0900, 24 bytes long.
+ Data: <                > 02 00 00 00 01 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {1133} normal block at 0x007B0750, 24 bytes long.
+ Data: <                > 01 00 00 00 00 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {1069} normal block at 0x007B0870, 24 bytes long.
+ Data: <                > 02 00 00 00 01 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {1068} normal block at 0x007B0828, 24 bytes long.
+ Data: <                > 00 00 00 00 06 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\main.cpp(397) : {1062} normal block at 0x007B1F38, 12 bytes long.
+ Data: <            > 00 00 00 00 CD CD CD CD 00 00 00 00 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {1045} normal block at 0x007B0ED0, 24 bytes long.
+ Data: <                > 00 00 00 00 0C 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {1044} normal block at 0x007B16B0, 24 bytes long.
+ Data: <                > 02 00 00 00 0A 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {1043} normal block at 0x007B11A0, 24 bytes long.
+ Data: <                > 03 00 00 00 03 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {1042} normal block at 0x007B1620, 24 bytes long.
+ Data: <                > 00 00 00 00 01 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {1041} normal block at 0x007B10C8, 24 bytes long.
+ Data: <                > 02 00 00 00 00 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {975} normal block at 0x007B1590, 24 bytes long.
+ Data: <                > 00 00 00 00 0C 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {974} normal block at 0x007B1548, 24 bytes long.
+ Data: <                > 02 00 00 00 0A 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {973} normal block at 0x007B0708, 24 bytes long.
+ Data: <                > 00 00 00 00 01 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {972} normal block at 0x007B0B88, 24 bytes long.
+ Data: <                > 03 00 00 00 03 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\main.cpp(397) : {966} normal block at 0x007B2168, 12 bytes long.
+ Data: <            > 00 00 00 00 CD CD CD CD 00 00 00 00 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {949} normal block at 0x007B0BD0, 24 bytes long.
+ Data: <                > 02 00 00 00 0B 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {948} normal block at 0x007B0B40, 24 bytes long.
+ Data: <                > 02 00 00 00 06 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {946} normal block at 0x007B0E10, 24 bytes long.
+ Data: <                > 03 00 00 00 04 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {945} normal block at 0x007B0CF0, 24 bytes long.
+ Data: <                > 02 00 00 00 04 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {881} normal block at 0x007B0678, 24 bytes long.
+ Data: <                > 02 00 00 00 0B 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {880} normal block at 0x007B0CA8, 24 bytes long.
+ Data: <                > 00 00 00 00 05 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(194) : {879} normal block at 0x007B0C18, 24 bytes long.
+ Data: <                > 03 00 00 00 04 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\main.cpp(397) : {873} normal block at 0x007B23D0, 12 bytes long.
+ Data: <            > 00 00 00 00 CD CD CD CD 00 00 00 00 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {856} normal block at 0x007B08B8, 24 bytes long.
+ Data: <                > 02 00 00 00 09 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {855} normal block at 0x007B0AB0, 24 bytes long.
+ Data: <                > 01 00 00 00 08 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {854} normal block at 0x007B07E0, 24 bytes long.
+ Data: <                > 01 00 00 00 07 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {853} normal block at 0x007B0A68, 24 bytes long.
+ Data: <                > 01 00 00 00 04 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {852} normal block at 0x007B0798, 24 bytes long.
+ Data: <                > 00 00 00 00 04 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {788} normal block at 0x007B0C60, 24 bytes long.
+ Data: <                > 01 00 00 00 08 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {787} normal block at 0x007B0A20, 24 bytes long.
+ Data: <                > 02 00 00 00 09 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\main.cpp(397) : {781} normal block at 0x007B22B8, 12 bytes long.
+ Data: <            > 00 00 00 00 CD CD CD CD 00 00 00 00 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {764} normal block at 0x007B1230, 24 bytes long.
+ Data: <                > 03 00 00 00 0C 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {763} normal block at 0x007B1D70, 24 bytes long.
+ Data: <                > 03 00 00 00 0A 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {761} normal block at 0x007B16F8, 24 bytes long.
+ Data: <                > 01 00 00 00 05 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {760} normal block at 0x007B1938, 24 bytes long.
+ Data: <                > 01 00 00 00 02 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {696} normal block at 0x007B18F0, 24 bytes long.
+ Data: <                > 01 00 00 00 06 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {695} normal block at 0x007B1E00, 24 bytes long.
+ Data: <                > 01 00 00 00 05 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {694} normal block at 0x007B18A8, 24 bytes long.
+ Data: <                > 03 00 00 00 0C 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\main.cpp(397) : {688} normal block at 0x007B2328, 12 bytes long.
+ Data: <            > 00 00 00 00 CD CD CD CD 00 00 00 00 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {671} normal block at 0x007B0F18, 24 bytes long.
+ Data: <                > 01 00 00 00 0B 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {669} normal block at 0x007B11E8, 24 bytes long.
+ Data: <                > 03 00 00 00 08 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {668} normal block at 0x007B1308, 24 bytes long.
+ Data: <                > 02 00 00 00 08 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {667} normal block at 0x007B1D28, 24 bytes long.
+ Data: <                > 03 00 00 00 00 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {603} normal block at 0x007B1CE0, 24 bytes long.
+ Data: <                > 03 00 00 00 09 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {602} normal block at 0x007B1B78, 24 bytes long.
+ Data: <                > 01 00 00 00 0B 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\main.cpp(397) : {596} normal block at 0x007B1EC8, 12 bytes long.
+ Data: <            > 00 00 00 00 CD CD CD CD 00 00 00 00 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {579} normal block at 0x007B15D8, 24 bytes long.
+ Data: <                > 02 00 00 00 0C 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {578} normal block at 0x007B1740, 24 bytes long.
+ Data: <                > 03 00 00 00 02 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {577} normal block at 0x007B1C08, 24 bytes long.
+ Data: <                > 03 00 00 00 01 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {576} normal block at 0x007B1860, 24 bytes long.
+ Data: <                > 01 00 00 00 01 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {575} normal block at 0x007B1AA0, 24 bytes long.
+ Data: <                > 00 00 00 00 00 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {511} normal block at 0x007B1A10, 24 bytes long.
+ Data: <                > 01 00 00 00 01 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\main.cpp(397) : {505} normal block at 0x007B1E90, 12 bytes long.
+ Data: <            > 00 00 00 00 CD CD CD CD 00 00 00 00 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {488} normal block at 0x007B1470, 24 bytes long.
+ Data: <                > 03 00 00 00 0B 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {487} normal block at 0x007B1110, 24 bytes long.
+ Data: <                > 00 00 00 00 07 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {486} normal block at 0x007B1818, 24 bytes long.
+ Data: <                > 03 00 00 00 05 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {485} normal block at 0x007B1500, 24 bytes long.
+ Data: <                > 02 00 00 00 03 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {484} normal block at 0x007B17D0, 24 bytes long.
+ Data: <                > 02 00 00 00 02 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {420} normal block at 0x007B1C98, 24 bytes long.
+ Data: <                > 00 00 00 00 07 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {419} normal block at 0x007B1C50, 24 bytes long.
+ Data: <                > 03 00 00 00 0B 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {418} normal block at 0x007B1AE8, 24 bytes long.
+ Data: <                > 02 00 00 00 03 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {417} normal block at 0x007B1A58, 24 bytes long.
+ Data: <                > 03 00 00 00 05 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\main.cpp(397) : {411} normal block at 0x007B2130, 12 bytes long.
+ Data: <            > 00 00 00 00 CD CD CD CD 00 00 00 00 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {394} normal block at 0x007B1788, 24 bytes long.
+ Data: <                > 00 00 00 00 02 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {393} normal block at 0x007B14B8, 24 bytes long.
+ Data: <                > 00 00 00 00 0B 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {392} normal block at 0x007B1428, 24 bytes long.
+ Data: <                > 02 00 00 00 05 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {391} normal block at 0x007B1350, 24 bytes long.
+ Data: <                > 01 00 00 00 0C 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {390} normal block at 0x007B19C8, 24 bytes long.
+ Data: <                > 01 00 00 00 0A 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {331} normal block at 0x007B0FA8, 24 bytes long.
+ Data: <                > 01 00 00 00 03 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {330} normal block at 0x007B13E0, 24 bytes long.
+ Data: <                > 02 00 00 00 07 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {329} normal block at 0x007B0F60, 24 bytes long.
+ Data: <                > 03 00 00 00 07 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {328} normal block at 0x007B1398, 24 bytes long.
+ Data: <                > 00 00 00 00 08 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(41) : {327} normal block at 0x007B1158, 24 bytes long.
+ Data: <                > 00 00 00 00 0A 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(194) : {287} normal block at 0x007B1080, 24 bytes long.
+ Data: <                > 03 00 00 00 07 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {286} normal block at 0x007B1668, 24 bytes long.
+ Data: <                > 00 00 00 00 08 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\linkedlist.cpp(185) : {285} normal block at 0x007B0FF0, 24 bytes long.
+ Data: <                > 02 00 00 00 07 00 00 00 CC CC CC CC 01 CC CC CC 
+c:\users\respino6\documents\230\gp230-poker\main.cpp(397) : {279} normal block at 0x007B20F8, 12 bytes long.
+ Data: <      {     > 00 00 00 00 80 19 7B 00 00 00 00 00 
+c:\users\respino6\documents\230\gp230-poker\main.cpp(100) : {181} normal block at 0x007AFD70, 12 bytes long.
+ Data: <  {     /   > F8 0A 7B 00 CD CD CD CD 2F 00 00 00 
+c:\users\respino6\documents\230\gp230-poker\main.cpp(99) : {180} normal block at 0x007AFDA8, 12 bytes long.
+ Data: <            > 00 00 00 00 CD CD CD CD 00 00 00 00 
+Object dump complete.

@@ -5,6 +5,16 @@
 //  Created by Rogelio Espinoza on 10/16/16.
 //  Copyright © 2016 Rogelio Espinoza. All rights reserved.
 //
+#define _CRTDBG_MAP_ALLOC
+#define _CRTDBG_MAP_ALLOC_NEW
+#include <cstdlib>
+#include <crtdbg.h>
+#ifdef _DEBUG
+#ifndef DBG_NEW
+#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+#define new DBG_NEW
+#endif
+#endif
 
 #include "LinkedList.h"
 #include <iostream>
@@ -61,12 +71,13 @@ void LinkedList::addLast(Card data)
     tail = n;
 }
 
-void LinkedList::printItems(char bullet, string prefix, string suffix)
+void LinkedList::printItems(char bullet, string prefix, string suffix, bool keptTag)
 {
     node* n = head;
     while(n != NULL)
     {
-        cout << bullet << prefix << n->data.rank << " of " << n->data.suit << suffix << endl;
+		string kept = keptTag == true && n->data.kept == true? " (kept) " : "";
+        cout << bullet << prefix << getRankName(n->data.rank) << " of " << getSuitName(n->data.suit) << suffix << kept << endl;
         n = n->next;
         bullet++;
     }
@@ -191,4 +202,84 @@ void LinkedList::sort()
     }
 }
 
+void LinkedList::markKept()
+{
+	for (int c = 0; c < countItems(); c++)
+	{
+		getNode(c)->data.kept = true;
+	}
+}
 
+string LinkedList::getRankName(int rank)
+{
+	string rankName;
+	switch (rank)
+	{
+	case 0:
+		rankName = "Ace";
+		break;
+	case 1:
+		rankName = "Two";
+		break;
+	case 2:
+		rankName = "Three";
+		break;
+	case 3:
+		rankName = "Four";
+		break;
+	case 4:
+		rankName = "Five";
+		break;
+	case 5:
+		rankName = "Six";
+		break;
+	case 6:
+		rankName = "Seven";
+		break;
+	case 7:
+		rankName = "Eight";
+		break;
+	case 8:
+		rankName = "Nine";
+		break;
+	case 9:
+		rankName = "Ten";
+		break;
+	case 10:
+		rankName = "Jack";
+		break;
+	case 11:
+		rankName = "Queen";
+		break;
+	case 12:
+		rankName = "King";
+		break;
+	default:
+		break;
+	}
+	return rankName;
+}
+
+string LinkedList::getSuitName(int suit)
+{
+	string suitName;
+	switch (suit)
+	{
+	case 0:
+		suitName = "Clubs";
+		break;
+	case 1:
+		suitName = "Diamonds";
+		break;
+	case 2:
+		suitName = "Hearts";
+		break;
+	case 3:
+		suitName = "Spades";
+		break;
+	default:
+		break;
+	}
+
+	return suitName;
+}

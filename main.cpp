@@ -5,6 +5,16 @@
 //  Created by Rogelio Espinoza on 10/12/16.
 //  Copyright © 2016 Rogelio Espinoza. All rights reserved.
 //
+#define _CRTDBG_MAP_ALLOC
+#define _CRTDBG_MAP_ALLOC_NEW
+#include <cstdlib>
+#include <crtdbg.h>
+#ifdef _DEBUG
+#ifndef DBG_NEW
+#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+#define new DBG_NEW
+#endif
+#endif
 
 #include <iostream>
 #include <string>
@@ -18,7 +28,7 @@ void requestInput();
 void buildDeck();
 void checkDeckStatus();
 void initHand();
-void printHand();
+void printHand(bool = false);
 void sortHand();
 void dumpHand();
 void startGame();
@@ -37,6 +47,8 @@ void awardMoney();
 void requestDiscard(string);
 bool checkConditions();
 string validateLetter(string);
+void lostGame();
+void exitGame();
 
 LinkedList *deck;
 LinkedList *hand;
@@ -63,10 +75,11 @@ string separator = "\n==========================================================
 string startGameMessage = "Welcome to CyberPoker 2999!";
 string startRoundMessage = "Ready! Go!";
 string swapWhichMessage = "Pick which card to swap: ";
-string swapWithMessage = "Enter the rank and the suit together (e.g. Ace of Diamonds would be \"AD\"";
+string swapWhichRankMessage = "Enter the rank [Ace = 1 and King = 13]: ";
+string swapWhichSuitMessage = "Enter the suit [C]lubs, [D]iamonds, [H]earts or [S]pades : ";
 string warningMessage = "Sorry, invalid option. Please try again. ";
 string discardMessage = "Type the cards you want to discard (e.g. ABC) or just type <Enter> if you don't want to discard any cards:";
-string optionsMessage = "OPTIONS... \n- Type the letters for the cards you wish to keep. (i.e., \"acd\") \n- Type \"deck\" to view the cards remaining in the deck. \n- Type \"none\" to discard all cards in your hand. \n- Type \"all\" to keep all cards in your hand. \n- Type \"exit\" to exit the game. \n- Type \"swap\" to CHEAT and swap a card in your hand with one in the deck. \nYOUR CHOICE :";
+string optionsMessage = "OPTIONS... \n- Type the letters for the cards you wish to keep. (i.e., \"acd\") \n- Type \"deck\" to view the cards remaining in the deck. \n- Type \"none\" to keep all cards in your hand. \n- Type \"all\" to discard all cards in your hand. \n- Type \"exit\" to exit the game. \n- Type \"swap\" to CHEAT and swap a card in your hand with one in the deck. \nYOUR CHOICE :";
 string winMessage = "You've won! You got ";
 string pairMessage = "One Pair (Jacks or higher)";
 string twoPairMessage = "Two Pairs";
@@ -78,8 +91,12 @@ string quadMessage = "Four of a Kind";
 string straightFlushMessage = "Straight Flush";
 string royalFlushMessage = "Royal Flush";
 string lostMessage = "Sorry! No good hands :(";
+string lostGameMessage = "Sorry! You're out of money. Game Over!";
 
 int main(int argc, const char * argv[]) {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF |
+		_CRTDBG_LEAK_CHECK_DF);
+
 	deck = new LinkedList();
 	dump = new LinkedList();
 
@@ -89,7 +106,7 @@ int main(int argc, const char * argv[]) {
 }
 bool inputManager(string command)
 {
-	cout << "MANAGING INPUT!" << endl;
+	//cout << "MANAGING INPUT!" << endl;
 	
 	if (command == "deck")
 	{
@@ -97,22 +114,26 @@ bool inputManager(string command)
 		deck->printItems();
 		return false;
 	}
-	else if (command == "none")
-	{
-		//discard everything;
-		discardCards("ABCDE");
-		drawCards(5);
-		return true;
-	}
 	else if (command == "all")
 	{
+		//discard everything;
+		cout << "That bad, huh?" << endl;
+		discardCards("ABCDE");
+		drawCards(5);
+		printHand();
+		return true;
+	}
+	else if (command == "none")
+	{
 		//discard none;
+		cout << "Awesome! You're keeping all the cards!" << endl;
+		printHand();
 		return true;
 	}
 	else if (command == "exit")
 	{
 		//exit;
-		exit(0);
+		exitGame();
 		return true;
 	}
 	else if(command == "swap")
@@ -121,7 +142,6 @@ bool inputManager(string command)
 		string option;
 
 		cout << swapWhichMessage << endl;
-		printHand();
 		getline(cin, option);
 		option = toupper(option[0]);
 		
@@ -132,11 +152,58 @@ bool inputManager(string command)
 			option = toupper(option[0]);
 		}
 
+
 		int index = option[0] - bullet;
-		Card swapCard = hand->getItem(index);
 
-		//swapCardAtWith()
+		int rank = 0;
 
+		cout << swapWhichRankMessage << endl;
+		cin >> rank;
+		cin.ignore();
+		cin.clear();
+
+		while (!cin || rank > 13 || rank < 1)
+		{
+			cout << warningMessage << swapWhichRankMessage << endl;
+			cin >> rank;
+			cin.ignore();
+			cin.clear();
+		}
+
+		rank = rank - 1;
+
+		option = "";
+		cout << swapWhichSuitMessage << endl;
+		getline(cin, option);
+		option = toupper(option[0]);
+
+		while (option[0] != 'S' && option[0] != 'D' && option[0] != 'H' && option[0] != 'C')
+		{
+			cout << warningMessage << swapWhichSuitMessage << endl;
+			getline(cin, option);
+			option = toupper(option[0]);
+		}
+		int suit;
+		switch (option[0])
+		{
+			case 'C':
+				suit = 0;
+				break;
+			case 'D':
+				suit = 1;
+				break;
+			case 'H':
+				suit = 2;
+				break;
+			case 'S':
+				suit = 3;
+				break;
+			default:
+				break;
+		}
+
+		swapCardAtWith(index, suit, rank);
+		printHand();
 		return false;
 
 	}
@@ -146,7 +213,7 @@ bool inputManager(string command)
 		//Check if they're valid;
 		//If not, request input again;
 		//If yes, send discard;
-		cout << "GOT INPUT!";
+		//cout << "GOT INPUT!";
 		string validInput = validateLetter(command);
 
 		if (validInput != "")
@@ -224,10 +291,17 @@ void startRound()
 	checkDeckStatus();
 	requestInput();
 
-	if (checkConditions())
-		awardMoney();
+	//If player won, award him money.
+	if (checkConditions()) awardMoney();
+
+	//Clean hand.
 	dumpHand();
-	startRound();
+
+	system("pause");
+	
+	//Check if player has enough money for next round.
+	if(money > 0) startRound();
+	else lostGame();
 }
 
 void requestDiscard(string input)
@@ -261,8 +335,10 @@ void requestDiscard(string input)
 
 	//Discard cards.
 	discardCards(input);
+	hand->markKept();
 	drawCards(input.length());
 	sortHand();
+	printHand(true);
 }
 
 string validateLetter(string input)
@@ -298,7 +374,7 @@ void initMoney()
 void payFee()
 {
 	money -= bet;
-	cout << "You bet $" << bet << "and now you have $" << money << " left!" << endl;
+	cout << "You bet $" << bet << " and now you have $" << money << " left!" << endl;
 }
 
 void printMoney()
@@ -309,8 +385,6 @@ void awardMoney()
 {
 	money += award;
 	cout << "You won " << "$" << award << "!" << endl;
-	system("pause");
-
 }
 void initHand()
 {
@@ -318,10 +392,10 @@ void initHand()
 	hand = new LinkedList();
 }
 
-void printHand()
+void printHand(bool keptTag)
 {
 	cout << "Your hand has the following cards:" << endl;
-	hand->printItems(bullet, listPrefix, "");
+	hand->printItems(bullet, listPrefix, "", keptTag);
 }
 
 void sortHand()
@@ -351,7 +425,9 @@ void initDraw(int qt)
 
 void discardCardAt(int index)
 {
-	dump->addFirst(hand->getItem(index));
+	Card discardedCard = hand->getItem(index);
+	//hand->getNode(index)->data.kept = false;
+	dump->addFirst(discardedCard);
 	hand->removeItem(index);
 }
 
@@ -398,9 +474,28 @@ void discardCards(string nums)
 
 void swapCardAtWith(int index, int suit, int rank)
 {
+	/*
 	discardCardAt(index);
-	Card pickedCard = hand->getItemBy(suit, rank);
+	//This should be deck;
+	
+	Card pickedCard = deck->getItemBy(suit, rank);
+	if (pickedCard == NULL)
+	{
+		pickedCard = dump->getItemBy(suit, rank);
+	}
 	hand->addFirst(pickedCard);
+	*/
+	LinkedList::node *cardNode = hand->getNode(index);
+	string swappingMessage = "You swapped the ";
+	swappingMessage.append(hand->getRankName(cardNode->data.rank));
+	swappingMessage.append(" of ");
+	swappingMessage.append(hand->getSuitName(cardNode->data.suit));
+
+	//Convert to desired card.
+	cardNode->data.rank = rank;
+	cardNode->data.suit = suit;
+	
+	cout << swappingMessage << " with a " << hand->getRankName(rank) << " of " << hand->getSuitName(suit) << "." << endl;
 }
 
 Card drawCard()
@@ -413,6 +508,7 @@ Card drawCard()
 	}
 	int randomIndex = rand() % deck->countItems();
 	Card randomCard = deck->getItem(randomIndex);
+	//randomCard.kept = true;
 	deck->removeItem(randomIndex);
 
 	return randomCard;
@@ -436,9 +532,9 @@ void drawCards(int draws)
 		{
 			drawMessage += " and ";
 		}
-		drawMessage += drawnCard.rank; 
+		drawMessage += hand->getRankName(drawnCard.rank); 
 		drawMessage += " of "; 
-		drawMessage += drawnCard.suit;
+		drawMessage += hand->getRankName(drawnCard.suit);
 	}
 
 	cout << drawMessage << endl;
@@ -461,7 +557,7 @@ bool checkConditions()
 		isFlush = currentCard.suit == nextCard.suit;
 		if (isFlush == false) break;
 	}
-	if (isFlush) cout << "isSuit!" << endl;
+	//if (isFlush) cout << "isSuit!" << endl;
 
 	//Create ranks array to count cards with same ranks.
 	int pairs[13] = { 0 };
@@ -520,7 +616,7 @@ bool checkConditions()
 	}
 	//If
 	bool isStraight = counter == 4;
-	if (isStraight) cout << "isStraight!" << endl;
+	//if (isStraight) cout << "isStraight!" << endl;
 
 	string winningHandMessage;
 
@@ -610,4 +706,23 @@ bool checkConditions()
 	}
 	return isPoker;
 }
+
+void lostGame()
+{
+	cout << lostGameMessage << endl;
+	exitGame();
+}
+
+void exitGame()
+{
+	delete deck;
+	delete hand;
+	delete dump;
+	deck = NULL;
+	hand = NULL;
+	dump = NULL;
+	exit(0);
+}
+
+
 
