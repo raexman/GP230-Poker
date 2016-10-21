@@ -74,12 +74,13 @@ void LinkedList::addLast(Card data)
 void LinkedList::printItems(char bullet, string prefix, string suffix, bool keptTag)
 {
     node* n = head;
+	bullet = bullet == 0 ? '>' : bullet;
     while(n != NULL)
     {
 		string kept = keptTag == true && n->data.kept == true? " (kept) " : "";
         cout << bullet << prefix << getRankName(n->data.rank) << " of " << getSuitName(n->data.suit) << suffix << kept << endl;
         n = n->next;
-        bullet++;
+        if(bullet != '>') bullet++;
     }
 }
 

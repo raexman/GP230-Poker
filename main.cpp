@@ -50,11 +50,20 @@ bool checkConditions();
 string validateLetter(string);
 void lostGame();
 void exitGame();
+void record();
+void extract();
+void readFile();
+void closeFile();
+void saveHand();
+void saveMoney();
 
 LinkedList *deck;
 LinkedList *hand;
 LinkedList *dump;
 
+float loses = 0;
+float gains = 0;
+float games = 0;
 float money;
 float bet;
 float award;
@@ -70,7 +79,9 @@ int isQuad = 0;
 int isTriad = 0;
 int isPair = 0;
 int isRoyalPair = 0;
-ofstream gameLog;
+char fileDelimiter = '|';
+ofstream oGameLog;
+ifstream iGameLog;
 
 string separator = "\n==========================================================\n";
 string startGameMessage = "Welcome to CyberPoker 2999!";
@@ -100,10 +111,10 @@ int main(int argc, const char * argv[]) {
 	deck = new LinkedList();
 	dump = new LinkedList();
 
+	extract();
 	buildDeck();
-	//deck->printItems();
 	startGame();
-
+	system("pause");
 	return 0;
 }
 bool inputManager(string command)
@@ -114,6 +125,7 @@ bool inputManager(string command)
 	{
 		//print deck;
 		deck->printItems();
+		printHand();
 		return false;
 	}
 	else if (command == "all")
@@ -305,6 +317,8 @@ void startRound()
 		system("pause");
 
 		//Check if player has enough money for next round.
+		loses += bet;
+		games++;
 		if (money > 0) startRound();
 		else lostGame();
 	}
@@ -368,10 +382,12 @@ void payFee()
 void printMoney()
 {
 	cout << "You have $" << money << "." << endl;
+	cout << "In " << games << " rounds, you've gained a total of $" << gains << ", and lost around $" << loses << "." << endl;
 }
 void awardMoney()
 {
 	money += award;
+	gains += award;
 	cout << "You won " << "$" << award << "!" << endl;
 }
 void initHand()
@@ -712,24 +728,54 @@ void exitGame()
 	deck = NULL;
 	hand = NULL;
 	dump = NULL;
+	record();
 }
 
-/*
-void openFile()
+
+void record()
 {
-	gameLog.open("gameLog.txt");
+	oGameLog.open("gameLog.txt", ofstream::app);
+	//cout << "File exists: " << oGameLog.good() << endl;
+	if (oGameLog.is_open())
+	{
+		oGameLog << endl << gains << fileDelimiter << loses << fileDelimiter << games;
+		/*oGameLog.app(gains);
+		oGameLog.app(fileDelimiter);
+		oGameLog.app(loses);*/
+		oGameLog.close();
+	}
 }
-void writeFile(string line)
+void extract()
 {
-	gameLog << line << endl;
+	string line;
+	iGameLog.open("gameLog.txt");
+	//cout << "File exists: " << iGameLog.good() << endl;
+	if (iGameLog.is_open() && iGameLog.good())
+	{
+		while (getline(iGameLog, line))
+		{
+			//cout << line << endl;
+		}
+
+		iGameLog.close();
+
+		int firstPipeIndex = line.find_first_of(fileDelimiter);
+		int lastPipeIndex = line.find_last_of(fileDelimiter);
+
+		gains = stoi(line.substr(0, firstPipeIndex));
+		loses = stoi(line.substr(firstPipeIndex + 1, lastPipeIndex));
+		games = stoi(line.substr(lastPipeIndex + 1, line.length() - lastPipeIndex - 1 ));
+		//cout << gains << " " << loses << " " << games << endl;
+	}
+
+
+	
 }
 void readFile()
 {
-
 }
 void closeFile()
 {
-	gameLog.close();
 }
 void saveHand()
 {
@@ -740,5 +786,4 @@ void saveMoney()
 {
 
 }
-*/
 
