@@ -159,7 +159,7 @@ bool inputManager(string command)
 		getline(cin, option);
 		option = toupper(option[0]);
 		
-		while (option[0] < 'A' || option[0] > 'Z')
+		while (option[0] < 'A' || option[0] > 'E')
 		{
 			cout << warningMessage << swapWhichMessage << endl;
 			getline(cin, option);
@@ -173,15 +173,15 @@ bool inputManager(string command)
 
 		cout << swapWhichRankMessage << endl;
 		cin >> rank;
-		cin.ignore();
 		cin.clear();
+		cin.ignore();
 
 		while (!cin || rank > 13 || rank < 1)
 		{
 			cout << warningMessage << swapWhichRankMessage << endl;
 			cin >> rank;
-			cin.ignore();
 			cin.clear();
+			cin.ignore();
 		}
 
 		rank = rank - 1;
