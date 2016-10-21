@@ -17,6 +17,7 @@
 #endif
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include "Card.h"
 #include "LinkedList.h"
@@ -54,8 +55,6 @@ LinkedList *deck;
 LinkedList *hand;
 LinkedList *dump;
 
-Card *handManager;
-
 float money;
 float bet;
 float award;
@@ -66,10 +65,12 @@ char bullet = 'A';
 string listPrefix = ": ";
 bool isFlush = false;
 bool isRoyal = false;
+bool isTerminating = false;
 int isQuad = 0;
 int isTriad = 0;
 int isPair = 0;
 int isRoyalPair = 0;
+ofstream gameLog;
 
 string separator = "\n==========================================================\n";
 string startGameMessage = "Welcome to CyberPoker 2999!";
@@ -79,7 +80,7 @@ string swapWhichRankMessage = "Enter the rank [Ace = 1 and King = 13]: ";
 string swapWhichSuitMessage = "Enter the suit [C]lubs, [D]iamonds, [H]earts or [S]pades : ";
 string warningMessage = "Sorry, invalid option. Please try again. ";
 string discardMessage = "Type the cards you want to discard (e.g. ABC) or just type <Enter> if you don't want to discard any cards:";
-string optionsMessage = "OPTIONS... \n- Type the letters for the cards you wish to keep. (i.e., \"acd\") \n- Type \"deck\" to view the cards remaining in the deck. \n- Type \"none\" to keep all cards in your hand. \n- Type \"all\" to discard all cards in your hand. \n- Type \"exit\" to exit the game. \n- Type \"swap\" to CHEAT and swap a card in your hand with one in the deck. \nYOUR CHOICE :";
+string optionsMessage = "OPTIONS... \n- Type the letters for the cards you wish to discard. (i.e., \"acd\") \n- Type \"deck\" to view the cards remaining in the deck. \n- Type \"none\" to keep all cards in your hand. \n- Type \"all\" to discard all cards in your hand. \n- Type \"exit\" to exit the game. \n- Type \"swap\" to CHEAT and swap a card in your hand with one in the deck. \nYOUR CHOICE :";
 string winMessage = "You've won! You got ";
 string pairMessage = "One Pair (Jacks or higher)";
 string twoPairMessage = "Two Pairs";
@@ -94,15 +95,16 @@ string lostMessage = "Sorry! No good hands :(";
 string lostGameMessage = "Sorry! You're out of money. Game Over!";
 
 int main(int argc, const char * argv[]) {
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF |
-		_CRTDBG_LEAK_CHECK_DF);
 
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	deck = new LinkedList();
 	dump = new LinkedList();
 
 	buildDeck();
 	//deck->printItems();
 	startGame();
+
+	return 0;
 }
 bool inputManager(string command)
 {
@@ -133,7 +135,7 @@ bool inputManager(string command)
 	else if (command == "exit")
 	{
 		//exit;
-		exitGame();
+		isTerminating = true;
 		return true;
 	}
 	else if(command == "swap")
@@ -291,17 +293,25 @@ void startRound()
 	checkDeckStatus();
 	requestInput();
 
-	//If player won, award him money.
-	if (checkConditions()) awardMoney();
+	if (!isTerminating)
+	{
 
-	//Clean hand.
-	dumpHand();
+		//If player won, award him money.
+		if (checkConditions()) awardMoney();
 
-	system("pause");
-	
-	//Check if player has enough money for next round.
-	if(money > 0) startRound();
-	else lostGame();
+		//Clean hand.
+		dumpHand();
+
+		system("pause");
+
+		//Check if player has enough money for next round.
+		if (money > 0) startRound();
+		else lostGame();
+	}
+	else
+	{
+		exitGame();
+	}
 }
 
 void requestDiscard(string input)
@@ -310,28 +320,6 @@ void requestDiscard(string input)
 	int inputMin = 1;
 	bool isValid = false;
 	bool discarding = false;
-
-	//Check for answer;
-	//If "No", continue;
-	//If "Yes", request which cards;
-
-	//cout << input << ". Length: " << input.length() << " and it's valid: " << isValid << "." << endl;
-
-	//Keep asking until the bastard gives us a valid input.
-	/*
-	while (!cin || input.length() > inputMax || input.length() < inputMin || isValid == false)
-	{
-		cout << warningMessage << discardMessage << endl;
-		getline(cin, input);
-
-		string validInput = validateLetter(input);
-		if (validInput != "" && validInput.length() == input.length())
-		{
-			input = validInput;
-			isValid = true;
-		}
-	}
-	*/
 
 	//Discard cards.
 	discardCards(input);
@@ -351,7 +339,7 @@ string validateLetter(string input)
 
 		l = toupper(l);
 		//Check if it's between the A-Z range.
-		if (l < 'A' || l > 'Z')
+		if (l < 'A' || l > 'E')
 		{
 			upperInput = "";
 			return upperInput;
@@ -389,6 +377,9 @@ void awardMoney()
 void initHand()
 {
 	//handManager = new Card[cardsInHand];
+	delete hand;
+	hand = NULL;
+
 	hand = new LinkedList();
 }
 
@@ -582,7 +573,7 @@ bool checkConditions()
 			break;
 		case 2:
 			isPair++;
-			if (pairs[p] > 9 || pairs[p] == 0) isRoyalPair++;
+			if (p > 9 || p == 0) isRoyalPair++;
 			//cout << "isPair!" << endl;
 			break;
 		case 1:
@@ -721,8 +712,33 @@ void exitGame()
 	deck = NULL;
 	hand = NULL;
 	dump = NULL;
-	exit(0);
 }
 
+/*
+void openFile()
+{
+	gameLog.open("gameLog.txt");
+}
+void writeFile(string line)
+{
+	gameLog << line << endl;
+}
+void readFile()
+{
 
+}
+void closeFile()
+{
+	gameLog.close();
+}
+void saveHand()
+{
+
+}
+
+void saveMoney()
+{
+
+}
+*/
 

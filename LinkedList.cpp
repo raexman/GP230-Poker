@@ -183,18 +183,26 @@ void LinkedList::sort()
             if((currentNode->data.rank > nextNode->data.rank && c < n) || (currentNode->data.rank < nextNode->data.rank && c > n))
             {
                 node *newNode = new node;
+
                 newNode->data = currentNode->data;
                 currentNode->data = nextNode->data;
                 nextNode->data = newNode->data;
-            }
+
+				delete newNode;
+				newNode = NULL;
+			}
 			else if (currentNode->data.rank == nextNode->data.rank)
 			{
 				if ((currentNode->data.suit > nextNode->data.suit && c < n) || (currentNode->data.suit < nextNode->data.suit && c > n))
 				{
 					node *newNode = new node;
+
 					newNode->data = currentNode->data;
 					currentNode->data = nextNode->data;
 					nextNode->data = newNode->data;
+
+					delete newNode;
+					newNode = NULL;
 				}
 			}
 
