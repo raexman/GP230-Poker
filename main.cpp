@@ -114,7 +114,7 @@ int main(int argc, const char * argv[]) {
 	extract();
 	buildDeck();
 	startGame();
-	system("pause");
+	//system("pause");
 	return 0;
 }
 bool inputManager(string command)
@@ -141,7 +141,8 @@ bool inputManager(string command)
 	{
 		//discard none;
 		cout << "Awesome! You're keeping all the cards!" << endl;
-		printHand();
+		hand->markKept();
+		printHand(true);
 		return true;
 	}
 	else if (command == "exit")
@@ -217,11 +218,12 @@ bool inputManager(string command)
 		}
 
 		swapCardAtWith(index, suit, rank);
+		sortHand();
 		printHand();
 		return false;
 
 	}
-	else if(command.length() > 0 && command.length() < 4)
+	else if(command.length() > 0 && command.length() < 6)
 	{
 		//Check if input is between 1 and 3;
 		//Check if they're valid;
@@ -337,6 +339,8 @@ void requestDiscard(string input)
 
 	//Discard cards.
 	discardCards(input);
+
+	//Mark cards left in hand as kept.
 	hand->markKept();
 	drawCards(input.length());
 	sortHand();
@@ -510,6 +514,9 @@ Card drawCard()
 	//Get random index between the existing cards range.
 	if (deck->countItems() < 1)
 	{
+		delete deck;
+		deck = NULL;
+
 		deck = dump;
 		dump = new LinkedList();
 	}
@@ -722,13 +729,19 @@ void lostGame()
 
 void exitGame()
 {
+	record();
+
+	oGameLog.close();
+	iGameLog.close();
+
 	delete deck;
 	delete hand;
 	delete dump;
+
 	deck = NULL;
 	hand = NULL;
 	dump = NULL;
-	record();
+	
 }
 
 
